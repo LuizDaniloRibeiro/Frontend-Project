@@ -3,7 +3,7 @@ import { ImageBackground, Text, View, KeyboardAvoidingView, Image, TextInput, To
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from './styles';
 
-export default function App() {
+export default function Register() {
   return (
     <KeyboardAvoidingView style={styles.container}>
 
@@ -60,43 +60,10 @@ export default function App() {
 
           <TouchableOpacity style={styles.btnLogin}>
             <Text style={styles.textBtnLogin}>Cadastrar</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => alert('Hello, world!')}>
-            <Text style={styles.textBtn}>Voltar para o Login</Text>
-          </TouchableOpacity>
-           
+          </TouchableOpacity>           
         </ImageBackground>
 
       </View>
     </KeyboardAvoidingView>
   );
 }
-
-
-{/* <View style={styles.containerLogo}>
-          <Image
-            source={require('../../assets/img/logo.png')}
-          />
-        </View>
-        <View>
-          <TextInput 
-            style={styles.input}
-            placeholder="E-mail/CPF"
-            autoCorrect={false}
-            onChangeText={()=> {}}
-          />
-          <TextInput 
-            style={styles.input}
-            placeholder="Senha"
-            autoCorrect={false}
-            onChangeText={()=> {}}
-            passwordRules={true}
-          />
-          <TouchableOpacity style={styles.btnLogin}>
-            <Text style={styles.textBtnLogin}>Entrar</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.btnLogin}>
-            <Text style={styles.textBtnLogin}>Cadastrar</Text>
-          </TouchableOpacity>
-        </View> */}

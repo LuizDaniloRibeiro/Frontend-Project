@@ -1,15 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 import { ImageBackground, Text, View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity } from 'react-native';
 
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from './styles';
 
-import AlterUser from '../dashboard-user-alter'
 
-
-export default function App() {
+export default function User({navigation}) {
   return (
-    <NavigationContainer>
 
         <KeyboardAvoidingView style={styles.container}>
 
@@ -52,8 +49,10 @@ export default function App() {
                 password={true} 
             />
 
-
-            <TouchableOpacity style={styles.btnLogin}>
+            <TouchableOpacity 
+                style={styles.btnLogin}
+                onPress={ () => navigation.navigate('Editar')}
+            >
                 <Text style={styles.textBtnLogin}>Editar</Text>
             </TouchableOpacity>
 
@@ -61,7 +60,6 @@ export default function App() {
 
         </View>
         </KeyboardAvoidingView>
-    </NavigationContainer>  
   );
 }
 

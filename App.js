@@ -6,15 +6,54 @@ import Administrador from './src/pages/dashboard-adm/index';
 import User from './src/pages/dashboard-user/index';
 import Login from './src/pages/login/index';
 import Register from './src/pages/register/index';
-import Teste from './src/pages/dashboard-adm-list/index';
+import Editar from './src/pages/dashboard-adm-list/index';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Teste" component={Teste} />
+      <Stack.Navigator initialRouteName='Login'>
+        <Stack.Screen 
+          name="Login" 
+          component={Login}
+          options={{
+            headerStyle: {
+              backgroundColor: '#000',
+            },
+            headerTintColor: '#000'
+          }} 
+        />
+        <Stack.Screen 
+          name="Cadastrar" 
+          component={Register} 
+          options={{
+            headerStyle: {
+              backgroundColor: '#000',
+            },
+            headerTintColor: '#FFF'
+          }}
+        />
+        <Stack.Screen 
+          name="Mind Consulting" 
+          component={User}
+          options={{
+            headerStyle: {
+              backgroundColor: '#F82352',
+            },
+            headerTintColor: '#FFF'
+          }}
+        />
+        <Stack.Screen 
+          name="Editar" 
+          component={Editar}
+          options={{
+            headerStyle: {
+              backgroundColor: '#F82352',
+            },
+            headerTintColor: '#FFF'
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
