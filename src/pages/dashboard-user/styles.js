@@ -29,11 +29,11 @@ const styles = StyleSheet.create({
     btnLogin: {
         width: '90%',
         backgroundColor: '#F82352',
-        marginBottom: 15,
         height: 43,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 20,
+        marginTop: 20
     },
     textBtnLogin: {
         color: '#fff',

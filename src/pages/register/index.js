@@ -16,19 +16,19 @@ export default function Register() {
       <View style={styles.imgBackground}>
         <ImageBackground  
           source={require('../../assets/img/bear.png')}
-          style={{width: 400, height: 400, alignItems: 'center', justifyContent: 'center'}}  
+          style={{width: 400, height: 400, alignItems: 'center', justifyContent: 'center', opacity:0.9}}  
         >
          
           <TextInput 
             style={styles.input}
-            placeholder="Nome"
+            placeholder="Nome completo"
             autoCorrect={false}
             onChangeText={()=> {}}
           />
 
           <TextInput 
             style={styles.input}
-            placeholder="CPF/CNPJ"
+            placeholder="CPF"
             autoCorrect={false}
             onChangeText={()=> {}}
           />

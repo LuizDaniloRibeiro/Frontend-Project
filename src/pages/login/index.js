@@ -13,11 +13,11 @@ export default function Login({ navigation }) {
       <View style={styles.imgBackground}>
         <ImageBackground  
           source={require('../../assets/img/bear.png')}
-          style={{width: 400, height: 400, alignItems: 'center', justifyContent: 'center'}}  
+          style={{width: 400, height: 450, alignItems: 'center', justifyContent: 'center', opacity: 0.9}}  
         >
           <TextInput 
             style={styles.input}
-            placeholder="E-mail/CPF"
+            placeholder="E-mail"
             autoCorrect={false}
             onChangeText={()=> {}}
           />

@@ -41,7 +41,6 @@ export default function User({navigation}) {
                 onChangeText={()=> {}}
             />
 
-
             <TextInput 
                 style={styles.input}
                 editable={false}
@@ -50,16 +49,16 @@ export default function User({navigation}) {
                 onChangeText={()=> {}}
             />
 
-
-            <TouchableOpacity 
-                style={styles.btnLogin}
-                onPress={ () => navigation.navigate('Editar')}
-            >
-                <Text style={styles.textBtnLogin}>Editar</Text>
-            </TouchableOpacity>
-
             </ImageBackground>
 
+            <View style={styles.container}>
+                <TouchableOpacity 
+                    style={styles.btnLogin}
+                    onPress={ () => navigation.navigate('Editar')}
+                >
+                    <Text style={styles.textBtnLogin}>Editar</Text>
+                </TouchableOpacity>
+            </View>
         </View>
         </KeyboardAvoidingView>
   );
