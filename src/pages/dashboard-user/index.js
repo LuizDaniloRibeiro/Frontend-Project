@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, Text, View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity } from 'react-native';
+import { ImageBackground, Text, View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, SafeAreaView } from 'react-native';
 
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from './styles';
@@ -9,45 +9,47 @@ export default function User({navigation}) {
   return (
 
         <KeyboardAvoidingView style={styles.container}>
+            <SafeAreaView style={{backgroundColor: '#F82352', width: '100%', height: '20%', marginBottom: 45, alignItems: 'center', justifyContent: 'center'}}>
+            <Image
+                style={{alignItems: 'center', justifyContent: 'center', marginTop: 65}}
+                source={require('../../assets/img/logo.png')}
+            />
+                <TouchableOpacity style={styles.addFotos}>
+                    <Ionicons name="md-person" size={62} color="#F82352" />
+                </TouchableOpacity>
+            </SafeAreaView>
 
-        <Image
-            style={{alignItems: 'center', justifyContent: 'center', marginBottom: 20}}
-            source={require('../../assets/img/logo.png')}
-        />
-        
-        <TouchableOpacity style={styles.addFotos}>
-            <Ionicons name="md-person" size={62} color="#F82352" />
-        </TouchableOpacity>
-        <Text style={styles.textAddFoto}>Nome</Text>
-
-        <View style={styles.imgBackground}>
-            <ImageBackground  
-            source={require('../../assets/img/bear.png')}
-            style={{width: 400, height: 400, alignItems: 'center', justifyContent: 'center'}}  
-            >
+            <View style={styles.imgBackground}>
+                <ImageBackground  
+                    source={require('../../assets/img/bear.png')}
+                    style={{width: 400, height: 400, alignItems: 'center', justifyContent: 'center', opacity: 0.9}}  
+                >
             
-            <TextInput 
+            <TextInput
                 style={styles.input}
-                placeholder="CPF/CNPJ"
+                placeholder="Nome"
                 autoCorrect={false}
-                onChangeText={()=> {}}
+                editable={false}
             />
 
             <TextInput 
                 style={styles.input}
+                placeholder="CPF/CNPJ"
+                editable={false}
+                disable={true}
+                autoCorrect={false}
+                onChangeText={()=> {}}
+            />
+
+
+            <TextInput 
+                style={styles.input}
+                editable={false}
                 placeholder="E-mail"
                 autoCorrect={false}
                 onChangeText={()=> {}}
             />
 
-            <TextInput 
-                style={styles.input}
-                placeholder="Senha"
-                autoCorrect={false}
-                onChangeText={()=> {}}
-                secureTextEntry={true}
-                password={true} 
-            />
 
             <TouchableOpacity 
                 style={styles.btnLogin}

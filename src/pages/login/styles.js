@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
         fontSize: 15,
         marginTop: 25,
         fontWeight: 'bold',
-    }
+    },
+    
 });
 
 export default styles;

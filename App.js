@@ -6,7 +6,7 @@ import Administrador from './src/pages/dashboard-adm/index';
 import User from './src/pages/dashboard-user/index';
 import Login from './src/pages/login/index';
 import Register from './src/pages/register/index';
-import Editar from './src/pages/dashboard-adm-list/index';
+import Editar from './src/pages/dashboard-user-alter/index';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,7 +35,7 @@ export default function App() {
           }}
         />
         <Stack.Screen 
-          name="Mind Consulting" 
+          name="Home" 
           component={User}
           options={{
             headerStyle: {

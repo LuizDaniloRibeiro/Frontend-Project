@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#000',
     },
     imgBackground: {
+        height: '75%'
     },
     containerLogo: {
         justifyContent: 'center',
@@ -20,7 +21,6 @@ const styles = StyleSheet.create({
         color: '#222',
         fontSize: 17,
         borderRadius: 20,
-        borderColor: '#F82352',
         padding: 10
     },
     btnGrup: {
@@ -46,10 +46,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     addFotos: {
-        width: 100,
-        height: 100,
+        width: 120,
+        height: 120,
         backgroundColor: '#FFF',
         borderRadius: 100,
+        borderColor: '#000',
+        borderWidth: 7,
         alignItems: 'center',
         justifyContent: 'center'
     },

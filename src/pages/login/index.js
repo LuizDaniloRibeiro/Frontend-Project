@@ -5,6 +5,7 @@ import styles from './styles';
 export default function Login({ navigation }) {
   return (
     <KeyboardAvoidingView style={styles.container}>
+      
       <Image
         style={{alignItems: 'center', justifyContent: 'center', marginBottom: 20}}
         source={require('../../assets/img/logo.png')}
@@ -32,7 +33,7 @@ export default function Login({ navigation }) {
 
           <TouchableOpacity 
             style={styles.btnLogin}
-            onPress={ () => navigation.navigate('Mind Consulting')}
+            onPress={ () => navigation.navigate('Home')}
           >
             <Text style={styles.textBtnLogin}>Entrar</Text>
           </TouchableOpacity>
