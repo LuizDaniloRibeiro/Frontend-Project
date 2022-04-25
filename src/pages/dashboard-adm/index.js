@@ -1,10 +1,9 @@
 import { NavigationContainer } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FlatList, SafeAreaView, View, Image, Text, TouchableOpacity, Button } from "react-native";
 import styles from './styles'
-import GetUsuarios from '../../contexts/auth';
 
-let lista = GetUsuarios;
+
 
 const DATA = [
   {
@@ -57,6 +56,27 @@ const Item = ({ item, onPress, backgroundColor, textColor, navigation }) => (
 const Adm = () => {
   const [selectedId, setSelectedId] = useState(null);
 
+    const [usuarios,setUsuarios]=useState([])
+  
+    let url = 'http://192.168.1.69:4000/usuarios';
+  
+  
+    useEffect(
+        ()=>{
+            fetch(url, {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then((resp)=>resp.json())
+                .then((json)=>setUsuarios(json))
+                .catch((err)=>(alert('Erro no GET de usuario:  ' + err)))
+                
+        },[]
+    )
+
   const renderItem = ({ item }) => {
     const backgroundColor = item.id === selectedId ? "#F82352" : "#BFBFBF";
     const color = item.id === selectedId ? 'white' : 'black';
@@ -78,15 +98,10 @@ const Adm = () => {
       <Text style={{color: '#FFF', fontSize: 17}}>Lista de usuários</Text>
       </View>
       <FlatList
-        data={DATA}
+        data={usuarios}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        onPress={(navigation)  => navigation}
-        extraData={selectedId}
+        keyExtractor={(item) => item._id}
       />
-      <View>
-          {console.log(GetUsuarios)}
-        </View>
     </SafeAreaView>
   );
 };

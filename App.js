@@ -2,6 +2,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import api from './src/services/api';
 import Admin from './src/pages/dashboard-adm/index';
 import User from './src/pages/dashboard-user/index';
 import Login from './src/pages/login/index';
