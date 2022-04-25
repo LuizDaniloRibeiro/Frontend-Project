@@ -2,6 +2,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import React, { useState } from "react";
 import { FlatList, SafeAreaView, View, Image, Text, TouchableOpacity, Button } from "react-native";
 import styles from './styles'
+import GetUsuarios from '../../contexts/auth';
+
+let lista = GetUsuarios;
 
 const DATA = [
   {
@@ -81,6 +84,9 @@ const Adm = () => {
         onPress={(navigation)  => navigation}
         extraData={selectedId}
       />
+      <View>
+          {console.log(GetUsuarios)}
+        </View>
     </SafeAreaView>
   );
 };

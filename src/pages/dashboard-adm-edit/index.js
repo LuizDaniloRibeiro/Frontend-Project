@@ -60,6 +60,7 @@ export default function Alterar({navigation}) {
             <Text style={styles.textBtnLogin}>Atualizar</Text>
           </TouchableOpacity>           
         </ImageBackground>
+        
       </View>
     </KeyboardAvoidingView>
   );
