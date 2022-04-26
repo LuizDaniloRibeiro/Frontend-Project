@@ -5,33 +5,33 @@ import styles from './styles'
 
 
 
-const DATA = [
-  {
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    nome: "Danilo Ribeiro",
-    cpf: "",
-    telefone: "",
-    email: "",
-    senha: "",
+// const DATA = [
+//   {
+//     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+//     nome: "Danilo Ribeiro",
+//     cpf: "",
+//     telefone: "",
+//     email: "",
+//     senha: "",
     
-  },
-  {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    nome: "Gabriel Henrique",
-    cpf: "",
-    telefone: "",
-    email: "",
-    senha: "",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    nome: "Kleber",
-    cpf: "",
-    telefone: "",
-    email: "",
-    senha: "",
-  }
-];
+//   },
+//   {
+//     id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+//     nome: "Gabriel Henrique",
+//     cpf: "",
+//     telefone: "",
+//     email: "",
+//     senha: "",
+//   },
+//   {
+//     id: "58694a0f-3da1-471f-bd96-145571e29d72",
+//     nome: "Kleber",
+//     cpf: "",
+//     telefone: "",
+//     email: "",
+//     senha: "",
+//   }
+// ];
 
 const Item = ({ item, onPress, backgroundColor, textColor, navigation }) => (
   <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
