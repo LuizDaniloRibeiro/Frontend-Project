@@ -21,45 +21,25 @@ export default function Register({ navigation }) {
   const [cpf, setCpf] = useState('') 
   const [email, setEmail] = useState('') 
   const [password, setPassword] = useState('')
-
+  const [cpfField, setCpfField] = useState('')
 
   
 
   async function cadastrar(){
-    if(nome == '' || null || undefined){
-        Alert.alert('Para realizar o cadastro é necessario preencher Nome completo');
-    }
-
-    else if(cpf == '' || null || undefined){
-      Alert.alert('Para realizar o cadastro é necessario preencher CPF');
-    }
-    
-    else if(email == '' || null || undefined){
-      Alert.alert('Para realizar o cadastro é necessario preencher E-mail');
-    }
-
-    else if(password == '' || null || undefined){
-      Alert.alert('Para realizar o cadastro é necessario insirir sua Senha');
-    }
-
-    else{
-        try{
-          const response = await api.post('/usuarios', {
-            nome,
-            cpf,
-            email,
-            password,
-            level: 1,
-          })
-          
-          Alert.alert('Cadastrado com sucesso!')
-
-          navigation.navigate('Home');
-        }catch(err){
-          Alert.alert(`Não foi possível cadastrar ${err}`)
-        }
+    try{
+      await api.post('/usuarios/register', {
+        nome,
+        cpf,
+        email,
+        password,
+        level: 1,
+      })
+      Alert.alert('Cadastrado com sucesso!')
+    }catch(err){
+        Alert.alert(err.message);
     }
   }
+
 
   return (
     <KeyboardAvoidingView style={styles.container}>
@@ -70,7 +50,8 @@ export default function Register({ navigation }) {
         <Text style={styles.textAddFoto}>Adicionar foto</Text>
     
         <View style={styles.imgBackground}>
-          <ImageBackground  
+          <ImageBackground 
+
             source={require('../../assets/img/bear.png')}
             style={{width: 400, height: 400, alignItems: 'center', justifyContent: 'center', opacity:0.9}}  
           >
@@ -78,6 +59,7 @@ export default function Register({ navigation }) {
             <TextInput 
               style={styles.input}
               placeholder="Nome completo"
+              maxLength={50}
               autoCorrect={false}
               onChangeText={(value)=> setName(value)}
             />
@@ -85,6 +67,7 @@ export default function Register({ navigation }) {
             <TextInput 
               style={styles.input}
               placeholder="CPF"
+              maxLength={11}
               autoCorrect={false}
               onChangeText={(value)=> setCpf(value)}
             />
@@ -92,6 +75,7 @@ export default function Register({ navigation }) {
             <TextInput 
               style={styles.input}
               placeholder="E-mail"
+              keyboardType='email-address'
               autoCorrect={false}
               onChangeText={(value)=> setEmail(value)}
             />
@@ -104,15 +88,6 @@ export default function Register({ navigation }) {
               secureTextEntry={true}
               password={true} 
             />
-  
-            {/* <TextInput 
-              style={styles.input}
-              placeholder="Confirmar senha"
-              autoCorrect={false}
-              onChangeText={()=> {}}
-              secureTextEntry={true}
-              password={true} 
-            /> */}
   
             <TouchableOpacity style={styles.btnLogin} onPress={cadastrar}>
               <Text style={styles.textBtnLogin}>Cadastrar</Text>

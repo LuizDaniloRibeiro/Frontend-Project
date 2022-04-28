@@ -37,7 +37,7 @@ export default function App() {
           }}
         />
         <Stack.Screen 
-          name="Home" 
+          name="usuarioComum" 
           component={User}
           options={{
             headerStyle: {
@@ -47,7 +47,7 @@ export default function App() {
           }}
         />
         <Stack.Screen 
-          name="ADM" 
+          name="administrador" 
           component={Admin}
           options={{
             headerStyle: {
