@@ -2,7 +2,10 @@
 
 ### 1. Introdução
 
-Aplicativo mobile feito para cadastrar e gerenciar usuários por nivel de acesso
+Aplicativo mobile feito para que um professor realize um login e consiga cadastrar um curso para sua plataforma
+
+- Sistema de login
+- CRUD Curso (Com upload de imagem)
 
 
 -----
@@ -11,6 +14,16 @@ Aplicativo mobile feito para cadastrar e gerenciar usuários por nivel de acesso
 1. **Node**
 2. **React Native [EXPO]**
 3. **Backen Iniciado**
+
+### Configuração
+
+- Baixar o Backend 
+- Iniciar o servidor 
+- Alterar o localhost
+
+## Testes
+
+- Cadastra um curso na apliacação e edite ou desative/ative na aba editar. 
 
 
 -----
@@ -31,4 +44,7 @@ Apoie o software livre! 🐧
 
 ## Autores
 * Luiz Danilo Ribeiro
+
+## Agradecimentos
+* Mind Conculting
 
