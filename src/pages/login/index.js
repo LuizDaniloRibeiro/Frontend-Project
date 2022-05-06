@@ -7,12 +7,12 @@ export default function Login({ navigation }) {
   const [usuario, setUsuario] = useState('')
   const [password, setPassword] = useState('')
 
-  useEffect(() => {
-    (async() => {
-      const token = await AsyncStorage.getItem('@CodeApi:token')
-      const user = JSON.parse(await AsyncStorage.getItem('@CodeApi:user'))
-    })
-  })
+  // useEffect(() => {
+  //   (async() => {
+  //     const token = await AsyncStorage.getItem('@CodeApi:token')
+  //     const user = JSON.parse(await AsyncStorage.getItem('@CodeApi:user'))
+  //   })
+  // })
 
   async function entrar() {
     try{
@@ -29,26 +29,26 @@ export default function Login({ navigation }) {
         password
       })
 
-      const { user, token } = res.data
-      console.log(res.data)
-      //setando user e o token no AsyncStorage
-      await AsyncStorage.multiSet([
-        ['@CodeApi:token', token],
-        ['@CodeApi:user', JSON.stringify(user)],
-      ])
+      // const { user, token } = res.data
+      // console.log(res.data)
+      // //setando user e o token no AsyncStorage
+      // await AsyncStorage.multiSet([
+      //   ['@CodeApi:token', token],
+      //   ['@CodeApi:user', JSON.stringify(user)],
+      // ])
 
-      if(user.level === 1){
-        Alert.alert('AQUI')
-        navigation.navigate('usuarioComum')
-      }
-      else{
-        if(user.level === 999){
-          navigation.navigate('administrador')
-        }
-        else{
-          Alert.alert('Oops! Este usuário está desativado! :(')
-        }
-      }
+      // if(user.level === 1){
+      //   Alert.alert('AQUI')
+      //   navigation.navigate('usuarioComum')
+      // }
+      // else{
+      //   if(user.level === 999){
+      //     navigation.navigate('administrador')
+      //   }
+      //   else{
+      //     Alert.alert('Oops! Este usuário está desativado! :(')
+      //   }
+      // }
     }catch(err){
       Alert.alert(`Erro ao cadastrar: ${err.message}`)
     }
@@ -68,14 +68,14 @@ export default function Login({ navigation }) {
         >
           <TextInput 
             style={styles.input}
-            placeholder="E-mail ou CPF"
+            placeholder="Seu e-mail"
             autoCorrect={false}
             onChangeText={(value)=> setUsuario(value)}
           />
 
           <TextInput 
             style={styles.input}
-            placeholder="Senha"
+            placeholder="Sua senha"
             autoCorrect={false}
             onChangeText={(value)=> setPassword(value)}
             secureTextEntry={true}
@@ -84,16 +84,10 @@ export default function Login({ navigation }) {
 
           <TouchableOpacity 
             style={styles.btnLogin}
-            onPress={entrar}
-          >
+            onPress={ () => navigation.navigate('Home')}          >
             <Text style={styles.textBtnLogin}>Entrar</Text>
           </TouchableOpacity>
-          
-          <TouchableOpacity
-            onPress={ () => navigation.navigate('Cadastrar')}
-          >
-            <Text style={styles.textBtn}>Não possui o cadastro? Clique aqui para cadastrar</Text>
-          </TouchableOpacity>
+        
         </ImageBackground>
       </View>
     </KeyboardAvoidingView>

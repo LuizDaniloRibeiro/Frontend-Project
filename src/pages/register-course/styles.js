@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
       backgroundColor: '#000',
     },
     imgBackground: {
-        height: '75%'
     },
     containerLogo: {
         justifyContent: 'center',
@@ -48,7 +47,6 @@ const styles = StyleSheet.create({
     addFotos: {
         width: 100,
         height: 100,
-        marginTop: 65,
         backgroundColor: '#FFF',
         borderRadius: 100,
         alignItems: 'center',

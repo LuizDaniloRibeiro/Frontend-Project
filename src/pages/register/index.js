@@ -5,7 +5,8 @@ import {
     View, 
     KeyboardAvoidingView, 
     Image, 
-    Alert, 
+    Alert,
+    Button, 
     TextInput, 
     TouchableOpacity,
     ActivityIndicator,
@@ -21,33 +22,42 @@ export default function Register({ navigation }) {
   const [cpf, setCpf] = useState('') 
   const [email, setEmail] = useState('') 
   const [password, setPassword] = useState('')
-  const [cpfField, setCpfField] = useState('')
+  const [response, setResponse] = useState('')
 
   
 
+  function alert(){
+    Alert.alert('aqui');
+  }
+
   async function cadastrar(){
     try{
-      await api.post('/usuarios/register', {
+      const response = await api.post('/usuarios/register', {
         nome,
         cpf,
         email,
         password,
         level: 1,
       })
-      Alert.alert('Cadastrado com sucesso!')
     }catch(err){
-        Alert.alert(err.message);
+      Alert.alert(err.message);
     }
   }
-
-
+  
+  useEffect(() => {
+    Alert.alert('Cadastrado com sucesso!');
+  }, [response])
+  
   return (
     <KeyboardAvoidingView style={styles.container}>
 
         <TouchableOpacity style={styles.addFotos}>
+          <Image
+            source={require('../../assets/img/logo.png')}
+          />
           <Ionicons name="md-person" size={62} color="#F82352" />
         </TouchableOpacity>
-        <Text style={styles.textAddFoto}>Adicionar foto</Text>
+        <Text style={styles.textAddFoto}>Adicionarfgdfgfdg foto</Text>
     
         <View style={styles.imgBackground}>
           <ImageBackground 
@@ -89,9 +99,9 @@ export default function Register({ navigation }) {
               password={true} 
             />
   
-            <TouchableOpacity style={styles.btnLogin} onPress={cadastrar}>
+            <Button style={styles.btnLogin} onPress={cadastrar}>
               <Text style={styles.textBtnLogin}>Cadastrar</Text>
-            </TouchableOpacity>           
+            </Button>           
           </ImageBackground>
           
         </View>

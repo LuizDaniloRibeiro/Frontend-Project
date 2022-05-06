@@ -4,26 +4,24 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       marginTop: StatusBar.currentHeight || 0,
-      backgroundColor: '#fff',
+      backgroundColor: '#000',
     },
     item: {
       padding: 20,
       marginVertical: 10,
-      marginHorizontal: 10,
-      borderRadius: 2,
-      alignItems: 'center',
-      justifyContent: 'center',
+      marginHorizontal: 25,
+      borderRadius: 5,
     },
     title: {
       marginTop: 20,
-      fontSize: 32,
+      fontSize: 17,
+      fontFamily: ''
     },
     addFotos: {
-        width: 120,
+        width: '100%',
         height: 120,
-        backgroundColor: '#FFF',
-        borderRadius: 100,
-        marginRight: 10,
+        backgroundColor: '#fff',
+        borderRadius: 5
     },
     fixToText: {
         flexDirection: 'row',
@@ -31,14 +29,14 @@ const styles = StyleSheet.create({
         marginTop: 30
     },
     btnLista: {
-        width: 100,
+        width: '100%',
         backgroundColor: '#F3613A',
         borderRadius: 2,
         color: '#fff',
         padding: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        marginRight: 10
+        marginRight: 5
     }
   });
 
