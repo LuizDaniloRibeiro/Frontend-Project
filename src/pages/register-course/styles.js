@@ -57,6 +57,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#FFF',
         marginBottom: 50,
+    },
+    textCadastrar: {
+        flex: 1,
+        color: '#fff',
+        fontSize: 20,
+        marginTop: 20
     }
 });
 

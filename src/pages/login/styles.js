@@ -39,11 +39,19 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     textBtn: {
+        justifyContent: 'center',
+        alignItems: 'center',
         color: '#FFF',
         fontSize: 15,
         marginTop: 25,
         fontWeight: 'bold',
     },
+    textCadastrar: {
+        fontSize: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#FFFFFF'
+    }
     
 });
 

@@ -4,11 +4,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Entypo, Feather } from '@expo/vector-icons';
 
 import Login from './login/index';
+import Register from './register/index';
 import Home from './dashboard-adm/index';
 import Couser from './register-course/index';
 
-import api from '../services/api'
-import { NavigationContainer } from '@react-navigation/native';
 import Editar from './cursoAlter/index';
 
 const Stack = createNativeStackNavigator();
@@ -37,7 +36,8 @@ function Tabs(){
                     headerStyle: {
                         backgroundColor: '#000',
                       },
-                    headerTintColor: '#fff'
+                    headerTintColor: '#fff',
+                    headerShown: false
                 }}
             />
             <Tab.Screen 
@@ -62,13 +62,39 @@ export default function Routes(){
     return(
             <Stack.Navigator >
                 <Stack.Screen 
+                    name='Login' 
+                    component={Login}
+                    options={{
+                        headerStyle: {
+                            backgroundColor: '#000',
+                        },
+                        headerTintColor: '#fff',
+                        headerShown: false
+
+                    }}
+                    
+                />
+                <Stack.Screen 
+                    name='Register' 
+                    component={Register}
+                    options={{
+                        headerStyle: {
+                            backgroundColor: '#000',
+                        },
+                        headerTintColor: '#fff',
+
+                    }}
+                    
+                />
+                <Stack.Screen 
                     name='Mind Consulting' 
                     component={Tabs}
                     options={{
                         headerStyle: {
                             backgroundColor: '#000',
                         },
-                        headerTintColor: '#fff'
+                        headerTintColor: '#fff',
+                        headerShown: false
                     }}
                     
                 />

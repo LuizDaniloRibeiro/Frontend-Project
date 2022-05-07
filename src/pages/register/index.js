@@ -1,17 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
 import { 
     ImageBackground, 
     Text, 
     View, 
     KeyboardAvoidingView, 
-    Image, 
     Alert,
-    Button, 
     TextInput, 
     TouchableOpacity,
-    ActivityIndicator,
   } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from './styles';
 import React, { useState, useEffect } from 'react'
 import api from '../../services/api';
@@ -37,7 +32,7 @@ export default function Register({ navigation }) {
         cpf,
         email,
         password,
-        level: 1,
+        level: 999,
       })
     }catch(err){
       Alert.alert(err.message);
@@ -51,13 +46,6 @@ export default function Register({ navigation }) {
   return (
     <KeyboardAvoidingView style={styles.container}>
 
-        <TouchableOpacity style={styles.addFotos}>
-          <Image
-            source={require('../../assets/img/logo.png')}
-          />
-          <Ionicons name="md-person" size={62} color="#F82352" />
-        </TouchableOpacity>
-        <Text style={styles.textAddFoto}>Adicionarfgdfgfdg foto</Text>
     
         <View style={styles.imgBackground}>
           <ImageBackground 
@@ -72,14 +60,6 @@ export default function Register({ navigation }) {
               maxLength={50}
               autoCorrect={false}
               onChangeText={(value)=> setName(value)}
-            />
-  
-            <TextInput 
-              style={styles.input}
-              placeholder="CPF"
-              maxLength={11}
-              autoCorrect={false}
-              onChangeText={(value)=> setCpf(value)}
             />
   
             <TextInput 
@@ -99,9 +79,9 @@ export default function Register({ navigation }) {
               password={true} 
             />
   
-            <Button style={styles.btnLogin} onPress={cadastrar}>
+            <TouchableOpacity style={styles.btnLogin} onPress={cadastrar}>
               <Text style={styles.textBtnLogin}>Cadastrar</Text>
-            </Button>           
+            </TouchableOpacity>           
           </ImageBackground>
           
         </View>

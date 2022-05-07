@@ -59,6 +59,8 @@ export default function Curso() {
   return (
     <KeyboardAvoidingView style={styles.container}>
 
+        <Text style={styles.textCadastrar}>Cadastrar cursos</Text>
+
         <TouchableOpacity style={styles.addFotos}>
           <Ionicons name="md-person" size={62} color="#F82352" />
         </TouchableOpacity>

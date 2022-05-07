@@ -1,23 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import { ImageBackground, Text, View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Alert, AsyncStorage } from 'react-native';
+import { ImageBackground, Text, View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Alert } from 'react-native';
 import styles from './styles';
 import api from '../../services/api'
 
 export default function Login({ navigation }) {
-  const [usuario, setUsuario] = useState('')
+  const [email, setUsuario] = useState('')
   const [password, setPassword] = useState('')
 
-  // useEffect(() => {
-  //   (async() => {
-  //     const token = await AsyncStorage.getItem('@CodeApi:token')
-  //     const user = JSON.parse(await AsyncStorage.getItem('@CodeApi:user'))
-  //   })
-  // })
-
   async function entrar() {
+
+
     try{
-      if(usuario === '' || usuario === null || usuario === undefined){
-        Alert.alert('Digite seu E-mail ou CPF para entrar');
+      if(email === '' || email === null || email === undefined){
+        Alert.alert('Digite seu E-mail para entrar');
       }
   
      if(password === '' || password === null || password === undefined){
@@ -25,30 +20,14 @@ export default function Login({ navigation }) {
       }
 
       const res = await api.post('/usuarios/login', {
-        usuario,
+        email,
         password
       })
 
-      // const { user, token } = res.data
-      // console.log(res.data)
-      // //setando user e o token no AsyncStorage
-      // await AsyncStorage.multiSet([
-      //   ['@CodeApi:token', token],
-      //   ['@CodeApi:user', JSON.stringify(user)],
-      // ])
 
-      // if(user.level === 1){
-      //   Alert.alert('AQUI')
-      //   navigation.navigate('usuarioComum')
-      // }
-      // else{
-      //   if(user.level === 999){
-      //     navigation.navigate('administrador')
-      //   }
-      //   else{
-      //     Alert.alert('Oops! Este usuário está desativado! :(')
-      //   }
-      // }
+      navigation.navigate('Mind Consulting', {dado: res})
+
+      
     }catch(err){
       Alert.alert(`Erro ao cadastrar: ${err.message}`)
     }
@@ -56,6 +35,10 @@ export default function Login({ navigation }) {
 
   return (
     <KeyboardAvoidingView style={styles.container}>
+      <Image 
+        source={require('../../assets/img/logo.png')}
+        style={{width: '50%', height: 45, alignItems: 'center', justifyContent: 'center'}}
+      />
       
       <Image
         style={{alignItems: 'center', justifyContent: 'center', marginBottom: 20}}
@@ -84,12 +67,19 @@ export default function Login({ navigation }) {
 
           <TouchableOpacity 
             style={styles.btnLogin}
-            onPress={ () => navigation.navigate('Home')}          >
+            onPress={entrar}
+          >
             <Text style={styles.textBtnLogin}>Entrar</Text>
           </TouchableOpacity>
-        
         </ImageBackground>
+
+
       </View>
+      <TouchableOpacity
+        onPress={ () => navigation.navigate('Register')}          
+      >
+        <Text style={styles.textCadastrar}>Clique aqui para cadastrar</Text>
+      </TouchableOpacity>
     </KeyboardAvoidingView>
   );
 }

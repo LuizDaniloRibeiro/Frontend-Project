@@ -3,7 +3,6 @@ import { StyleSheet, StatusBar } from "react-native";
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      marginTop: StatusBar.currentHeight || 0,
       backgroundColor: '#000',
     },
     item: {
@@ -37,7 +36,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: 5
-    }
+    },
+    inputPesquisa: {
+      height: 40,
+      position: 'relative',
+      backgroundColor: '#363636',
+      margin: 19,
+      borderRadius: 20,
+      fontSize: 19,
+      paddingLeft: 15,
+      paddingRight: 15,
+      color: '#FFFFFF',
+    },orderButton: {
+      width: 32,
+      marginRight: 30,
+    },
   });
 
 export default styles

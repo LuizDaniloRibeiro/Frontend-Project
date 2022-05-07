@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { FlatList, SafeAreaView, View, Image, Text, TouchableOpacity, Alert } from "react-native";
+import { FlatList, SafeAreaView, View, Image, Text, TouchableOpacity, Alert, TextInput } from "react-native";
 import api from "../../services/api";
-import styles from './styles'
-// import { AsyncStorage } from 'react-@react-native-community/async-storage';
-
-
+import styles from './styles';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Item = ({ item, onPress, backgroundColor, textColor, navigation }) => (
   
@@ -12,6 +10,7 @@ const Item = ({ item, onPress, backgroundColor, textColor, navigation }) => (
 
     <TouchableOpacity style={styles.addFotos}>
       <Image
+      //<Image source={{ uri: data.avatar }} style={style.itemPhoto}/>
         style={{width: '100%', height: '100%'}}
         source={require('../../assets/img/logo.png')}
       />
@@ -35,8 +34,8 @@ const Item = ({ item, onPress, backgroundColor, textColor, navigation }) => (
 
 const Adm = ({navigation}) => {
   const [selectedId, setSelectedId] = useState(null);
-  const [cursos,setCursos]=useState([])
-  const [nivel, setNivel] = useState('') 
+  const [cursos,setCursos]=useState([]); 
+  const [pesquisarText, setPesquisar] = useState('');
   
   useEffect
     (async() => {
@@ -44,12 +43,25 @@ const Adm = ({navigation}) => {
         setCursos(resp.data);
       });
   },[])
-  
 
+  useEffect(async() => {
+    if(pesquisarText === ''){
+      await api.get('/cursos').then((resp) => {
+        setCursos(resp.data)
+      })
+    }else{
+      setCursos(
+        cursos.filter(
+          (item) => 
+            item.nome.toLowerCase().indexOf(pesquisarText.toLowerCase()) > -1
+        )
+      );
+    }
+  },[pesquisarText]);
 
   const renderItem = ({ item }) => {
     const backgroundColor = item._id === selectedId ? "#BFBFBF" : "#BFBFBF";
-    const color = item._id === selectedId ? 'white' : 'black';
+    const color = item._id === selectedId ? 'black' : 'black';
 
     return (
       <Item
@@ -58,13 +70,22 @@ const Adm = ({navigation}) => {
         backgroundColor={{ backgroundColor }}
         textColor={{ color }}
         navigation={navigation}
-        extraData={selectedId}
       />
     );
   };
 
   return (
     <SafeAreaView style={styles.container}>
+      <View>
+        <TextInput
+          style={styles.inputPesquisa}
+          placeholder="Pesquisar por nome do curso"
+          placeholderTextColor="#888"
+          value={pesquisarText}
+          onChangeText={(t) => setPesquisar(t)}
+        />
+      </View>
+
       <FlatList
         data={cursos}
         renderItem={renderItem}
