@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
         marginRight: 5
     },
     inputPesquisa: {
+      marginTop: 50,
       height: 40,
-      position: 'relative',
       backgroundColor: '#363636',
       margin: 19,
       borderRadius: 20,

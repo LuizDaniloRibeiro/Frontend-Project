@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { FlatList, SafeAreaView, View, Image, Text, TouchableOpacity, Alert, TextInput } from "react-native";
 import api from "../../services/api";
 import styles from './styles';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Item = ({ item, onPress, backgroundColor, textColor, navigation }) => (
   
@@ -32,7 +31,7 @@ const Item = ({ item, onPress, backgroundColor, textColor, navigation }) => (
   </TouchableOpacity>
 );
 
-const Adm = ({navigation}) => {
+const Adm = ({navigation, route}) => {
   const [selectedId, setSelectedId] = useState(null);
   const [cursos,setCursos]=useState([]); 
   const [pesquisarText, setPesquisar] = useState('');

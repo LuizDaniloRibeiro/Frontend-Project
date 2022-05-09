@@ -22,15 +22,33 @@ export default function Editar({route}) {
   const [nivel, setNivel] = useState('')
 
     
-  function alerta(){
-    Alert.alert('Alert Title', 'My Alert Msg', [
-      {
-        text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
-        style: 'cancel',
-      },
-      { text: 'OK', onPress: () => console.log('OK Pressed') },
-    ]);
+  async function statusCurso(){
+    try{
+      const curso = route.params?.itens
+      const nivel = curso.nivel;
+
+      if(nivel === 1){
+        console.log(nivel)
+
+        desativar
+        
+        Alert.alert('Aviso!', `Curso ${curso.nome} foi desasivado`);
+
+      }
+      else if(nivel != 1){
+        ativar
+
+        Alert.alert('Aviso!', `Curso ${curso.nome} foi ativado!`);
+          
+      }
+    }catch(err){
+      if(nivel === 1){
+        Alert.alert('Erro ao ativar o curso: ' + err);
+      }
+      else{
+        Alert.alert('Erro ao desativar o curso: ' + err);
+      }
+    }
   }
 
   useEffect(() => {
@@ -45,12 +63,27 @@ export default function Editar({route}) {
     })()
   }, [])
 
+  async function ativar(){
+    try{
+      const curso = route.params?.itens
+      const id = curso._id;
+      const nivel = curso.nivel;
+
+      await api.put(`/cursos/${id}`, {
+        _id: id,
+        nome,
+        nivel: 1,
+      })
+
+    }catch(err){
+      Alert.alert(`Ops! Ocorreu um erro ${err}`);
+    }
+  }
 
   async function desativar(){
     try{
       const curso = route.params?.itens
       const id = curso._id
-      console.log(id)
 
       await api.put(`/cursos/${id}`, {
         _id: id,
@@ -58,7 +91,6 @@ export default function Editar({route}) {
         nivel: 0,
       })
 
-      Alert.alert(`${nome} desativa com sucesso!`);
     }catch(err){
       Alert.alert(`Ops! Ocorreu um erro ${err}`);
     }
@@ -77,7 +109,7 @@ export default function Editar({route}) {
         categoria,
         descricao
       }).then((resp) => {
-        Alert.alert(`${nome} desativa com sucesso!`);
+        Alert.alert(`${nome} atualizado com sucesso!`);
       })
 
     }catch(err){
@@ -135,20 +167,22 @@ export default function Editar({route}) {
               onChangeText={(value)=> setDescricao(value)}
               value={descricao}
             />
-            
-            <TouchableOpacity 
-              style={styles.btnLogin}
-              onPress={alerta}
-            >
-              <Text style={styles.textBtnLogin}>Atualizar</Text>
-            </TouchableOpacity>
 
             <TouchableOpacity 
               style={styles.btnLogin}
-              onPress={desativar}
+              onPress={statusCurso}
             >
-              <Text style={styles.textBtnLogin}>Desativar Curso</Text>
-            </TouchableOpacity>             
+              <Text style={styles.textBtnLogin}>Ativar/Desativar</Text>
+            </TouchableOpacity> 
+            
+            <TouchableOpacity 
+              style={styles.btnLogin}
+              onPress={atualizar}
+            >
+              <Text style={styles.textBtnLogin}>Atualizar Curso</Text>
+            </TouchableOpacity>
+
+                        
           </ImageBackground>
           
         </View>

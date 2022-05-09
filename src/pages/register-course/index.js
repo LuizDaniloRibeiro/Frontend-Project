@@ -27,28 +27,35 @@ export default function Curso() {
 
       if(nome === '' || nome === undefined || nome === null){
         Alert.alert('Informe o nome do curso para cadastrar');
-        console.log('aquiiii');
+        return 
       }
 
       else if(professor === '' || professor === undefined || professor === null){
         Alert.alert('Informe o nome do professor para cadastrar');
+        return
       }
 
       else if(categoria === '' || categoria === undefined || categoria === null){
         Alert.alert('Informe a categoria para cadastrar');
+        return
       }
 
       else if(descricao === '' || descricao === undefined || descricao === null){
         Alert.alert('Informe a descrição para cadastrar');
+        return
       }
 
-      const response = await api.post('/cursos/register-curso', {
+      api.post('/cursos/register-curso', {
         nome,
         professor,
         categoria,
         descricao,
         nivel: 1,
       })
+      
+      Alert.alert('Curso cadastrado!');
+
+      return
 
     }catch(err){
         Alert.alert('Não foi possível cadastrar!')
@@ -58,8 +65,6 @@ export default function Curso() {
 
   return (
     <KeyboardAvoidingView style={styles.container}>
-
-        <Text style={styles.textCadastrar}>Cadastrar cursos</Text>
 
         <TouchableOpacity style={styles.addFotos}>
           <Ionicons name="md-person" size={62} color="#F82352" />

@@ -8,37 +8,42 @@ export default function Login({ navigation }) {
   const [password, setPassword] = useState('')
 
   async function entrar() {
-
-
     try{
       if(email === '' || email === null || email === undefined){
         Alert.alert('Digite seu E-mail para entrar');
+        return
       }
   
-     if(password === '' || password === null || password === undefined){
+      if(password === '' || password === null || password === undefined){
         Alert.alert('Digite sua Senha para entrar');
+        return
       }
 
-      const res = await api.post('/usuarios/login', {
-        email,
-        password
+      const res = api.post('/usuarios/login', {
+       email,
+       password
       })
 
+      if((await res).status === '500'){
+        Alert.alert('erro')
+        return
+      }
+      else{
+        navigation.navigate('Mind Consulting')      
+      }
 
-      navigation.navigate('Mind Consulting', {dado: res})
-
-      
-    }catch(err){
+    }catch(error){
       Alert.alert(`Erro ao cadastrar: ${err.message}`)
+      return
     }
   }
 
   return (
     <KeyboardAvoidingView style={styles.container}>
-      <Image 
+      {/* <Image 
         source={require('../../assets/img/logo.png')}
         style={{width: '50%', height: 45, alignItems: 'center', justifyContent: 'center'}}
-      />
+      /> */}
       
       <Image
         style={{alignItems: 'center', justifyContent: 'center', marginBottom: 20}}
