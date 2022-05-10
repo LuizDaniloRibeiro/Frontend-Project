@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#000',
     },
     imgBackground: {
+        width: '100%'
     },
     containerLogo: {
         justifyContent: 'center',
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         color: '#222',
         fontSize: 17,
-        borderRadius: 20,
+        borderRadius: 8,
         padding: 10
     },
     btnGrup: {
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
         height: 43,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 20,
+        borderRadius: 8,
     },
     textBtnLogin: {
         color: '#fff',

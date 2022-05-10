@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { ImageBackground, Text, View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Alert } from 'react-native';
 import styles from './styles';
 import api from '../../services/api'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 export default function Login({ navigation }) {
   const [email, setUsuario] = useState('')
@@ -40,10 +41,6 @@ export default function Login({ navigation }) {
 
   return (
     <KeyboardAvoidingView style={styles.container}>
-      {/* <Image 
-        source={require('../../assets/img/logo.png')}
-        style={{width: '50%', height: 45, alignItems: 'center', justifyContent: 'center'}}
-      /> */}
       
       <Image
         style={{alignItems: 'center', justifyContent: 'center', marginBottom: 20}}
@@ -54,27 +51,34 @@ export default function Login({ navigation }) {
           source={require('../../assets/img/bear.png')}
           style={{width: 400, height: 450, alignItems: 'center', justifyContent: 'center', opacity: 0.9}}  
         >
-          <TextInput 
-            style={styles.input}
-            placeholder="Seu e-mail"
-            autoCorrect={false}
-            onChangeText={(value)=> setUsuario(value)}
-          />
 
-          <TextInput 
-            style={styles.input}
-            placeholder="Sua senha"
-            autoCorrect={false}
-            onChangeText={(value)=> setPassword(value)}
-            secureTextEntry={true}
-            password={true} 
-          />
+          <View style={styles.icon}>
+            <TextInput 
+              style={styles.input}
+              placeholder="Seu e-mail"
+              autoCorrect={false}
+              onChangeText={(value)=> setUsuario(value)}            
+            />
+            <Icon style={styles.iconEmail} name="envelope" size={24} color="#121212"/>
+          </View>
+
+          <View style={styles.icon}>
+            <TextInput 
+              style={styles.input}
+              placeholder="Sua senha"
+              autoCorrect={false}
+              onChangeText={(value)=> setPassword(value)}
+              secureTextEntry={true}
+              password={true} 
+            />
+            <Icon style={styles.iconPassword} name="lock" size={24} color="#121212"/>
+          </View>
 
           <TouchableOpacity 
             style={styles.btnLogin}
             onPress={entrar}
           >
-            <Text style={styles.textBtnLogin}>Entrar</Text>
+            <Text style={styles.textBtnLogin}>Acessar</Text>
           </TouchableOpacity>
         </ImageBackground>
 

@@ -14,7 +14,6 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from './styles';
 import api from '../../services/api';
 
-
 export default function Curso() {
   const [nome, setName] = useState('') 
   const [professor, setProfessor] = useState('') 
@@ -63,13 +62,14 @@ export default function Curso() {
   }
 
 
+
   return (
     <KeyboardAvoidingView style={styles.container}>
 
         <TouchableOpacity style={styles.addFotos}>
           <Ionicons name="md-person" size={62} color="#F82352" />
         </TouchableOpacity>
-        <Text style={styles.textAddFoto}>Adicionar foto</Text>
+        <Text style={styles.textAddFoto}>Adicionar imagem</Text>
     
         <View style={styles.imgBackground}>
           <ImageBackground 

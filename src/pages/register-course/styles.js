@@ -48,9 +48,9 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         backgroundColor: '#FFF',
-        borderRadius: 100,
+        borderRadius: 125 / 2,
+        justifyContent: 'center',
         alignItems: 'center',
-        justifyContent: 'center'
     },
     textAddFoto: {
         fontSize: 18,

@@ -119,8 +119,6 @@ export default function Editar({route}) {
   
   return (
     <KeyboardAvoidingView style={styles.container}>
-
-
         <TouchableOpacity style={styles.addFotos}>
           <Ionicons name="md-person" size={62} color="#F82352" />
         </TouchableOpacity>
@@ -139,7 +137,7 @@ export default function Editar({route}) {
               autoCorrect={false}
               onChangeText={(value)=> setNome(value)}
               value={nome}
-              />
+            />
   
             <TextInput 
               style={styles.input}
@@ -182,9 +180,7 @@ export default function Editar({route}) {
               <Text style={styles.textBtnLogin}>Atualizar Curso</Text>
             </TouchableOpacity>
 
-                        
           </ImageBackground>
-          
         </View>
     </KeyboardAvoidingView>
   )

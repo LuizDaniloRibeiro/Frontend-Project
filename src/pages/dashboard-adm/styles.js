@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
     },
     btnLista: {
         width: '100%',
-        backgroundColor: '#F3613A',
-        borderRadius: 2,
+        backgroundColor: '#F82352',
+        borderRadius: 5,
         color: '#fff',
         padding: 10,
         alignItems: 'center',
@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
         marginRight: 5
     },
     inputPesquisa: {
+      width: '70%',
       marginTop: 50,
       height: 40,
       backgroundColor: '#363636',
@@ -47,9 +48,15 @@ const styles = StyleSheet.create({
       paddingLeft: 15,
       paddingRight: 15,
       color: '#FFFFFF',
-    },orderButton: {
-      width: 32,
+    },
+    searchArea: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    orderButton: {
       marginRight: 30,
+      top: 15,
+      left: 25
     },
   });
 

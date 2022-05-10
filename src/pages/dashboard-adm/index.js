@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FlatList, SafeAreaView, View, Image, Text, TouchableOpacity, Alert, TextInput } from "react-native";
 import api from "../../services/api";
 import styles from './styles';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Item = ({ item, onPress, backgroundColor, textColor, navigation }) => (
   
@@ -10,8 +11,8 @@ const Item = ({ item, onPress, backgroundColor, textColor, navigation }) => (
     <TouchableOpacity style={styles.addFotos}>
       <Image
       //<Image source={{ uri: data.avatar }} style={style.itemPhoto}/>
-        style={{width: '100%', height: '100%'}}
-        source={require('../../assets/img/logo.png')}
+        style={{width: '100%', height: '100%', borderRadius: 5}}
+        source={require('../../assets/img/curso-ti2.jpg')}
       />
     </TouchableOpacity>
     <Text style={[styles.title, textColor]}>{item.nome}</Text>
@@ -25,7 +26,7 @@ const Item = ({ item, onPress, backgroundColor, textColor, navigation }) => (
             style={styles.btnLista}
             onPress={() => {navigation.navigate('Editar', {itens: item})}}
         >
-            <Text style={{color: '#FFF', fontSize: 20}}>Editar Curso</Text>
+            <Text style={{color: '#FFF', fontSize: 20}}>EDITAR CURSO</Text>
         </TouchableOpacity>
     </View>
   </TouchableOpacity>
@@ -43,6 +44,7 @@ const Adm = ({navigation, route}) => {
       });
   },[])
 
+
   useEffect(async() => {
     if(pesquisarText === ''){
       await api.get('/cursos').then((resp) => {
@@ -59,8 +61,8 @@ const Adm = ({navigation, route}) => {
   },[pesquisarText]);
 
   const renderItem = ({ item }) => {
-    const backgroundColor = item._id === selectedId ? "#BFBFBF" : "#BFBFBF";
-    const color = item._id === selectedId ? 'black' : 'black';
+    const backgroundColor = item._id === selectedId ? "#212529" : "#212529";
+    const color = item._id === selectedId ? 'white' : 'white';
 
     return (
       <Item
@@ -75,7 +77,7 @@ const Adm = ({navigation, route}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
+      <View style={styles.searchArea}>
         <TextInput
           style={styles.inputPesquisa}
           placeholder="Pesquisar por nome do curso"
@@ -83,6 +85,17 @@ const Adm = ({navigation, route}) => {
           value={pesquisarText}
           onChangeText={(t) => setPesquisar(t)}
         />
+       
+        <TouchableOpacity 
+          style={styles.orderButton}
+          onPress={() => {navigation.navigate('Login')}}
+        >
+          <MaterialCommunityIcons
+            name="account-circle"
+            size={40}
+            color="#888"
+          />
+        </TouchableOpacity>
       </View>
 
       <FlatList

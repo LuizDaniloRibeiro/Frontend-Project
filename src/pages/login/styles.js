@@ -8,18 +8,24 @@ const styles = StyleSheet.create({
       backgroundColor: '#000',
     },
     imgBackground: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%'
     },
     containerLogo: {
         justifyContent: 'center',
         marginBottom: 50,
     },
     input: {
+        height: 50,
         width: '90%',
+        paddingLeft: 60,
         backgroundColor: '#fff',
+        marginHorizontal: 20,
         marginBottom: 15,
-        color: '#222',
-        fontSize: 17,
-        borderRadius: 20,
+        color: '#000',
+        fontSize: 20,
+        borderRadius: 8,
         padding: 10
     },
     btnGrup: {
@@ -32,7 +38,7 @@ const styles = StyleSheet.create({
         height: 43,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 20,
+        borderRadius: 8,
     },
     textBtnLogin: {
         color: '#fff',
@@ -51,6 +57,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         color: '#FFFFFF'
+    },
+    icon: {
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    iconEmail: {
+        position: 'absolute',
+        left: 40, 
+        top: 10
+    },
+    iconPassword: {
+        position: 'absolute',
+        left: 40, 
+        top: 10
     }
     
 });
