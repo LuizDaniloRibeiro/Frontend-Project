@@ -8,7 +8,7 @@ import {
     TouchableOpacity,
   } from 'react-native';
 import styles from './styles';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import api from '../../services/api';
 
 
@@ -39,7 +39,7 @@ export default function Register({ navigation }) {
       const response = await api.post('/usuarios/register', {
         nome,
         email,
-        password,
+        password
       })
 
       navigation.navigate('Mind Consulting');

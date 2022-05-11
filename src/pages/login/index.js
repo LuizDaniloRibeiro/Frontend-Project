@@ -26,7 +26,7 @@ export default function Login({ navigation }) {
       })
 
       if((await res).status === '500'){
-        Alert.alert('erro')
+        Alert.alert('Oops! Erro ao casdastrar! Verifique seu e-mail e senha')
         return
       }
       else{

@@ -21,8 +21,10 @@ function Tabs(){
                     backgroundColor: '#000',
                     paddingBottom:5,
                     paddingTop:5,
+                    borderTopColor: '#b2b2b2',
+                    borderTopWidth: 0.4
                 },
-                tabBarActiveTintColor: '#F82352',
+                tabBarActiveTintColor: '#fff',
                 headerShown: false
             }}
         >

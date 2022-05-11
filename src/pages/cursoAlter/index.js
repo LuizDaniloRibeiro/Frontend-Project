@@ -21,35 +21,7 @@ export default function Editar({route}) {
   const [descricao, setDescricao] = useState('')
   const [nivel, setNivel] = useState('')
 
-    
-  async function statusCurso(){
-    try{
-      const curso = route.params?.itens
-      const nivel = curso.nivel;
 
-      if(nivel === 1){
-        console.log(nivel)
-
-        desativar
-        
-        Alert.alert('Aviso!', `Curso ${curso.nome} foi desasivado`);
-
-      }
-      else if(nivel != 1){
-        ativar
-
-        Alert.alert('Aviso!', `Curso ${curso.nome} foi ativado!`);
-          
-      }
-    }catch(err){
-      if(nivel === 1){
-        Alert.alert('Erro ao ativar o curso: ' + err);
-      }
-      else{
-        Alert.alert('Erro ao desativar o curso: ' + err);
-      }
-    }
-  }
 
   useEffect(() => {
     (async () => {
@@ -63,17 +35,21 @@ export default function Editar({route}) {
     })()
   }, [])
 
+
   async function ativar(){
     try{
       const curso = route.params?.itens
       const id = curso._id;
-      const nivel = curso.nivel;
-
+      
       await api.put(`/cursos/${id}`, {
         _id: id,
         nome,
         nivel: 1,
       })
+
+      setNivel(nivel)
+
+      Alert.alert('Aviso!', `Curso ${curso.nome} foi ativado`);
 
     }catch(err){
       Alert.alert(`Ops! Ocorreu um erro ${err}`);
@@ -85,12 +61,18 @@ export default function Editar({route}) {
       const curso = route.params?.itens
       const id = curso._id
 
+      
       await api.put(`/cursos/${id}`, {
         _id: id,
         nome,
         nivel: 0,
       })
+      
+      setNivel(curso.nivel)
+      
+      Alert.alert('Aviso!', `Curso ${curso.nome} foi desasivado`);
 
+      
     }catch(err){
       Alert.alert(`Ops! Ocorreu um erro ${err}`);
     }
@@ -108,9 +90,9 @@ export default function Editar({route}) {
         professor,
         categoria,
         descricao
-      }).then((resp) => {
-        Alert.alert(`${nome} atualizado com sucesso!`);
       })
+
+      Alert.alert('Aviso!', `Curso ${curso.nome} foi atualizado`);
 
     }catch(err){
       Alert.alert(`Ops! Ocorreu um erro ${err}`);
@@ -166,12 +148,25 @@ export default function Editar({route}) {
               value={descricao}
             />
 
-            <TouchableOpacity 
-              style={styles.btnLogin}
-              onPress={statusCurso}
-            >
-              <Text style={styles.textBtnLogin}>Ativar/Desativar</Text>
-            </TouchableOpacity> 
+            {nivel === 1 ? (
+                <TouchableOpacity
+                  style={styles.btnLogin}
+                  onPress={desativar}
+                >
+
+                  <Text style={styles.textBtnLogin}>Desativar Curso</Text>
+                </TouchableOpacity>
+            ) : null}
+
+            {nivel === 0 ? (
+                <TouchableOpacity 
+                  style={styles.btnLogin}
+                  onPress={ativar}
+                >
+                  <Text style={styles.textBtnLogin}>Ativar Curso</Text>
+                </TouchableOpacity> 
+            ): null }
+
             
             <TouchableOpacity 
               style={styles.btnLogin}

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { FlatList, SafeAreaView, View, Image, Text, TouchableOpacity, Alert, TextInput } from "react-native";
+import { FlatList, SafeAreaView, View, Image, Text, TouchableOpacity, RefreshControl, TextInput } from "react-native";
 import api from "../../services/api";
 import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Item = ({ item, onPress, backgroundColor, textColor, navigation }) => (
-  
+
   <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
 
     <TouchableOpacity style={styles.addFotos}>
@@ -36,6 +36,7 @@ const Adm = ({navigation, route}) => {
   const [selectedId, setSelectedId] = useState(null);
   const [cursos,setCursos]=useState([]); 
   const [pesquisarText, setPesquisar] = useState('');
+  const [isRefreshing, setRefreshing] = useState(false)
   
   useEffect
     (async() => {
@@ -102,6 +103,15 @@ const Adm = ({navigation, route}) => {
         data={cursos}
         renderItem={renderItem}
         keyExtractor={(item) => item._id}
+        refreshControl={<RefreshControl refreshing={isRefreshing}  onRefresh={async() => {
+          setRefreshing(true)
+            await api.get('/cursos').then((resp) => {
+              setCursos(resp.data)
+            })
+            console.log('atualizou')
+            setRefreshing(false)
+        }}/>}
+       
       />
     </SafeAreaView>
   );

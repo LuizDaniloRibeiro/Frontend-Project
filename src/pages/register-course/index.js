@@ -13,6 +13,7 @@ import {
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from './styles';
 import api from '../../services/api';
+import * as ImagePicker from 'expo-image-picker';
 
 export default function Curso() {
   const [nome, setName] = useState('') 
@@ -22,6 +23,7 @@ export default function Curso() {
 
 
   async function cadastrar(){
+    const [cursoImage, setCursoImage] = useState('')
     try{
 
       if(nome === '' || nome === undefined || nome === null){
@@ -61,12 +63,37 @@ export default function Curso() {
     }
   }
 
+  const openImageLibrary = async () => {
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+    console.log(status)
+
+    if (status !== 'granted') {
+      alert('Desculpe, precisamos de permissões do rolo da câmera para que isso funcione');
+    }
+
+    if (status === 'granted') {
+      const response = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+      });
+
+      console.log(response)
+
+      if (!response.cancelled) {
+        setProfileImage(response.uri);
+      }
+    }
+  };
 
 
   return (
     <KeyboardAvoidingView style={styles.container}>
 
-        <TouchableOpacity style={styles.addFotos}>
+        <TouchableOpacity 
+          style={styles.addFotos}
+          onPress={openImageLibrary}
+        >
           <Ionicons name="md-person" size={62} color="#F82352" />
         </TouchableOpacity>
         <Text style={styles.textAddFoto}>Adicionar imagem</Text>
